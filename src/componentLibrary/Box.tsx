@@ -210,7 +210,7 @@ const BOX = styled("div")<StyleProps>(
         backgroundColor: backgroundColorOnHover,
       }),
     },
-  })
+  }),
 );
 
 type GetPolyComonentProps<T> = T extends ElementType ? ComponentProps<T> : {};

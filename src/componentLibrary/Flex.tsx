@@ -16,7 +16,7 @@ const _Flex = styled(Box)<StyleProps>(
     ...(direction && { flexDirection: direction }),
     ...(flexWrap && { flexWrap: flexWrap }),
     ...(justifyContent && { justifyContent }),
-  })
+  }),
 );
 
 type Props<T> = BoxProps<T> & StyleProps;

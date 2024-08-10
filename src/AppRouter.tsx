@@ -9,7 +9,10 @@ type Props = {
 export default function AppRouter(props: Props): JSX.Element {
   return (
     <Routes>
-      <Route path="/" element={<HomeContainer apiClient={props.apiClient} />} />
+      <Route
+        path="/*"
+        element={<HomeContainer apiClient={props.apiClient} />}
+      />
     </Routes>
   );
 }

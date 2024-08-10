@@ -1,10 +1,12 @@
 import { Question } from "../types";
 import unreliableAxios from "./unreliableAxios";
 
-const AMOUNT = "5";
-const CATEGORY = "11";
-const DIFFICULTY = "medium";
-const TYPE = "multiple";
+type GetQuestionsProps = {
+  amount: string;
+  difficulty: string;
+  category: string;
+  type?: string;
+};
 
 export default class APIClient {
   baseURL: string;
@@ -14,10 +16,15 @@ export default class APIClient {
     this.baseURL = params.baseURL;
   }
 
-  public async getQuestions() {
+  public async getQuestions({
+    amount,
+    difficulty,
+    category,
+    type = "multiple",
+  }: GetQuestionsProps) {
     const res = (await unreliableAxios.get(
       this.baseURL +
-        `/api.php?amount=${AMOUNT}&category=${CATEGORY}&difficulty=${DIFFICULTY}&type=${TYPE}`
+        `/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`,
     )) as unknown as { data: { results: Question[] } };
 
     return res.data.results;

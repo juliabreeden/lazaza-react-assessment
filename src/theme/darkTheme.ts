@@ -52,7 +52,8 @@ export const fontStyles = {
 };
 
 const colors = {
-  backgroundColor: palette.grey[80],
+  // backgroundColor: palette.grey[80],
+  backgroundColor: palette.purple[20],
   diabledBackgroundColor: palette.grey[20],
   cardBackground: palette.grey[80],
   error: palette.red[40],
