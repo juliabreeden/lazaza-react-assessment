@@ -8,8 +8,8 @@ type Props = {
 
 export default function Welcome({ onStartGame }: Props) {
   return (
-    <Card maxWidth="600px" width="100%" alignSelf="center">
-      <Flex direction="row">
+    <Card maxWidth="600px" width="40%" alignSelf="center" padding="10px">
+      <Flex direction="row" alignItems="center">
         <div>
           <h1>Welcome to the Trivia Game!</h1>
           <p>Here's how to play:</p>
@@ -19,7 +19,9 @@ export default function Welcome({ onStartGame }: Props) {
             <li>Click the settings icon to adjust your game preferences.</li>
             <li>Try to get as many correct answers as possible!</li>
           </ul>
-          <Button onClick={onStartGame}> Start Game</Button>
+          <Flex justifyContent="center" width="100%">
+            <Button onClick={onStartGame}> Start Game</Button>
+          </Flex>
         </div>
       </Flex>
     </Card>

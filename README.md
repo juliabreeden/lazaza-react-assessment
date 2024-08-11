@@ -43,3 +43,20 @@ For submission, either fork the repo and provide the url, or zip your local repo
 `npm run dev`
 
 App will be running on `http://localhost:3001/`
+
+## Julia's Updates
+
+- **Settings:** Added options to configure game difficulty, number of questions, category, and a timed game mode with 15 seconds per question.
+- **Question Persistence:** Ensured that questions are only refreshed when settings change or when new questions are requested, preventing unnecessary reloads if the user navigates away briefly.
+- **UI Enhancements:** Integrated a progress bar, color-coded answers, and basic visual feedback for correct and incorrect responses.
+- **Error handling:** Created an ErrorBox component to display to user's if error persists after 3 retries.
+
+### Roadmap if More Time:
+- Add more unit tests
+- Implement a visual timer cue
+- Further gamify the UI
+- Add non-multiple-choice question types
+- Improve specific error handling and user experience feedback
+
+
+

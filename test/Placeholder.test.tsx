@@ -1,15 +1,14 @@
-import { screen, render } from "@testing-library/react";
-import Placeholder from "../src/components/Placeholder";
+import { render, screen, fireEvent } from "@testing-library/react";
+import Settings from "../src/components/Settings";
 
-const setup = () => {
-  return render(<Placeholder questions={[]} />);
-};
-
-describe("Placeholder", () => {
-  it("Renders Three Cards", () => {
-    setup();
-    const placeholders = screen.getAllByText(/Placeholder/);
-
-    expect(placeholders.length).toEqual(3);
-  });
+test("updates settings and starts game", () => {
+  const handleSettingsUpdate = jest.fn();
+  render(<Settings onSettingsUpdate={handleSettingsUpdate} />);
+  
+  fireEvent.click(screen.getByRole('button', { name: /Apply Settings/ }));
+  expect(handleSettingsUpdate).toHaveBeenCalled();
 });
+
+
+
+

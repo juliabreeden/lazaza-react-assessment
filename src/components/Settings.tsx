@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Card from "../componentLibrary/Card";
 import Button from "../componentLibrary/Button";
+import Flex from "../componentLibrary/Flex";
 
 type Props = {
   onSettingsUpdate: (settings: {
     difficulty: string;
     numberOfQuestions: number;
     category: string;
+    timedMode: boolean;
   }) => void;
 };
 
@@ -39,52 +41,69 @@ const categories = [
 ];
 
 export default function Settings({ onSettingsUpdate }: Props) {
-  const [difficulty, setDifficulty] = useState("easy");
-  const [numberOfQuestions, setNumberOfQuestions] = useState(5);
-  const [category, setCategory] = useState(categories[0].id); // Default to the first category
+  //default to 5 easy questions from first category
+  const [difficulty, setDifficulty] = useState<string>("easy");
+  const [numberOfQuestions, setNumberOfQuestions] = useState<number>(5);
+  const [category, setCategory] = useState<string>(categories[0].id);
+  const [timedMode, setTimedMode] = useState<boolean>(false);
 
   const applySettings = () => {
-    onSettingsUpdate({ difficulty, numberOfQuestions, category });
+    onSettingsUpdate({ difficulty, numberOfQuestions, category, timedMode });
   };
 
   return (
-    <Card>
-      <form>
-        <label>
-          Difficulty:
-          <select
-            value={difficulty}
-            onChange={(e) => setDifficulty(e.target.value)}
-          >
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
-        </label>
-        <label>
-          Number of Questions:
-          <input
-            type="number"
-            value={numberOfQuestions}
-            onChange={(e) => setNumberOfQuestions(Number(e.target.value))}
-            min={1}
-            max={50}
-          />
-        </label>
-        <label>
-          Category:
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <Button onClick={applySettings}>Apply Settings</Button>
+    <Card width="40%" alignSelf="center" padding="5px">
+      <form style={{ width: "100%", maxWidth: "500px", margin: "0 auto" }}>
+        <Flex direction="column" alignItems="center">
+          <h2>Game Settings</h2>
+          <label style={{ marginBottom: "10px", width: "100%" }}>
+            Difficulty:
+            <select
+              value={difficulty}
+              onChange={(e) => setDifficulty(e.target.value)}
+              style={{ marginLeft: "10px", width: "100%" }}
+            >
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+          <label style={{ marginBottom: "10px", width: "100%" }}>
+            Number of Questions:
+            <input
+              type="number"
+              value={numberOfQuestions}
+              onChange={(e) => setNumberOfQuestions(Number(e.target.value))}
+              min={1}
+              max={50}
+              style={{ marginLeft: "10px", width: "100%" }}
+            />
+          </label>
+          <label style={{ marginBottom: "20px", width: "100%" }}>
+            Category:
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              style={{ marginLeft: "10px", width: "100%" }}
+            >
+              {categories.map((cat) => (
+                <option key={cat.id} value={cat.id}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label style={{ marginBottom: "10px", width: "100%" }}>
+            Timed Mode:
+            <input
+              type="checkbox"
+              checked={timedMode}
+              onChange={(e) => setTimedMode(e.target.checked)}
+              style={{ marginLeft: "10px" }}
+            />
+          </label>
+          <Button onClick={applySettings}>Apply Settings</Button>
+        </Flex>
       </form>
     </Card>
   );

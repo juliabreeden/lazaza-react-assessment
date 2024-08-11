@@ -7,13 +7,20 @@ type Props = {
 };
 
 const StyledButton = styled.button(({ theme }) => ({
-  backgroundColor: theme.primary,
+  backgroundColor: theme.primaryLight,
   borderRadius: theme.borderRadius_2,
-  color: theme.textColor,
+  color: theme.textInverted,
   padding: `${theme.space_md} ${theme.space_lg}`,
   fontSize: theme.h4_fontSize,
   boxShadow: "none",
   border: "none",
+  cursor: "pointer",
+  marginBottom: "2px",
+  //hover effects
+  transition: "background-color 0.3s ease",
+  "&:hover": {
+    backgroundColor: theme.primary,
+  },
 }));
 
 export default function Button(props: Props) {
