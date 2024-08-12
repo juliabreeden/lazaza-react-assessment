@@ -49,10 +49,10 @@ App will be running on `http://localhost:3001/`
 - **Settings:** Added options to configure game difficulty, number of questions, category, and a timed game mode with 15 seconds per question.
 - **Question Persistence:** Ensured that questions are only refreshed when settings change or when new questions are requested, preventing unnecessary reloads if the user navigates away briefly.
 - **UI Enhancements:** Integrated a progress bar, basic visual feedback for correct and incorrect responses, and a confetti celebration for a perfect score.
-- **Error handling:** Created an ErrorBox component to display to user's if error persists after 3 retries.
+- **Error handling:** Created an ErrorBox component to display to users if error persists after 3 retries.
 
 ### Roadmap if More Time:
-- Add more unit tests
+- Add comprehensive unit testing
 - Implement a visual timer cue
 - Further gamify the UI
 - Add non-multiple-choice question types
